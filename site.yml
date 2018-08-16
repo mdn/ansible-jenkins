@@ -1,0 +1,11 @@
+---
+- hosts: jenkins
+  become: True
+
+  roles:
+    - role: packages
+      tags: packages
+
+  var_files:
+    - 'local_settings.yml'
+    - './vars/main.yml'

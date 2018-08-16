@@ -1,0 +1,28 @@
+---
+- name: Create user account
+  become: yes
+  user:
+    name: "{{ item.user }}"
+    shell: "/bin/bash"
+    groups: "users,sudo"
+    create_home: yes
+    system: yes
+    state: present
+  with_items:
+    - "{{ account_names }}"
+
+- name: Add ssh key for users
+  authorized_key:
+    user: "{{ item.user }}"
+    key: "{{ item.key }}"
+    state: present
+  with_items:
+    - "{{ account_names }}"
+
+- name: Copying sudoers file
+  copy:
+    src: 'sudoers'
+    dest: '/etc/sudoers.d/99-users'
+    owner: root
+    group: root
+		mode: '0440'

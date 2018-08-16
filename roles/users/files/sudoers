@@ -1,0 +1,4 @@
+# File managed by ansible
+# Users in sudo group can sudo without password
+
+%sudo ALL=(ALL) NOPASSWD:ALL

@@ -1,0 +1,55 @@
+---
+- name: Add Docker Repository Key
+  apt_key:
+    state: present
+    url: "https://download.docker.com/linux/{{ ansible_distribution|lower }}/gpg"
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release|lower }} stable"
+    state: present
+    update_cache: yes
+    tags:
+      - docker
+
+- name: Install Docker
+  apt:
+    name: docker-ce=18.*
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
+    tags:
+      - docker
+
+- name: Set Docker to use AUFS
+  lineinfile:
+    dest: /etc/default/docker
+    regexp: ^DOCKER_OPTS=
+    line: 'DOCKER_OPTS="-s aufs  --insecure-registry=http://localhost:5000,http://localhost:5001"'
+    notify: Restart Docker
+    tags:
+      - docker
+
+- name: Install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}"
+    dest: "/usr/local/bin/docker-compose"
+    mode: '0755'
+
+
+- name: Copy docker-cleanup script
+  template:
+    src: docker-cleanup.sh.j2
+    dest: /usr/local/bin/remove-docker-images.sh
+    mode: 0755
+
+- name: Create cron job for docker-cleanup script
+  cron:
+		name: "Remove docker images"
+		minute: 0
+		hour: 3
+		weekday: 0
+    user: "root"
+		job: "/usr/local/bin/remove-docker-images.sh 2> /dev/null"
+		cron_file: remove_docker_images
+

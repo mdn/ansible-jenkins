@@ -1,0 +1,20 @@
+---
+- name: Install nginx
+  apt: name=nginx-light state=present update_cache=yes cache_valid_time=600
+
+# We are going into maintenance mode, stop nginx.
+#- name: Stop nginx
+#	service:
+  #		name=nginx
+  #	state=stopped
+  #tags:
+    #	- install-plugins
+
+- name: Copy nginx configuration
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/sites-enabled/default
+    group: root
+    owner: root
+    mode: 0644
+  notify: Reload Nginx

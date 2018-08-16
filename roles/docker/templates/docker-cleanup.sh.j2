@@ -1,0 +1,9 @@
+#!/bin/bash
+# Cleanup unused docker images
+set -x
+docker system prune -a -f
+
+{% if docker_images_cleanup_dms is defined %}
+curl -s {{ docker_images_cleanup_dms }}
+{% endif %}
+echo "Completed docker image cleanup."
