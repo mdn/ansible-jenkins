@@ -1,6 +1,10 @@
 ---
 - name: Install nginx
-  apt: name=nginx-light state=present update_cache=yes cache_valid_time=600
+  apt:
+    name: nginx-light
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
 
 # We are going into maintenance mode, stop nginx.
 #- name: Stop nginx
@@ -18,3 +22,12 @@
     owner: root
     mode: 0644
   notify: Reload Nginx
+
+- name: Set htpasswd
+  htpasswd:
+    path: /etc/nginx/htpasswd
+    name: jenkins
+    password: "{{ nginx_htpasswd }}"
+    group: www-data
+    mode: '0640'
+

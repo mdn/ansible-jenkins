@@ -6,6 +6,10 @@ The playbook will install NGINX, Docker, a local-only
 SMTP server and Jenkins. It will also install Docker-maintenance cron
 jobs and Jenkins-backup scripts to S3.
 
+This playbook assumes that the instance is behind an elb and the elb will
+do its SSL termination. The ssl certificate can be obtained using AWS ACM
+or can be manually uploaded
+
 This playbook is a rework of the [ee-infra-jenkins](https://github.com/mozmeao/ee-infra-jenkins)
 
 ## Build your own
@@ -14,7 +18,7 @@ This playbook is a rework of the [ee-infra-jenkins](https://github.com/mozmeao/e
 3. Clone this repository to a location
 4. Run the playbook
 ```
-ansible-playbook site.yml
+ansible-playbook site.yml -e "nginx_htpasswd=YourPasswordHere"
 ```
 
 ## Jenkins backups

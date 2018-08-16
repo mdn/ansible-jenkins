@@ -18,4 +18,6 @@
       tags: jenkins
     - role: kubernetes
       tags: kubernetes
+    - role: nginx
+      tags: nginx
 
