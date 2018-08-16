@@ -9,6 +9,6 @@
     - role: users
       tags: users
 
-  var_files:
-    - 'local_settings.yml'
+  vars_files:
+    #- 'local_settings.yml'
     - './vars/main.yml'
