@@ -1,0 +1,6 @@
+---
+- name: Restart newrelic
+  service:
+    name: newrelic-sysmond
+    state: restarted
+  become_user: root
