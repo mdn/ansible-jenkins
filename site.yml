@@ -20,4 +20,5 @@
       tags: kubernetes
     - role: nginx
       tags: nginx
-
+    - role: mail
+      tags: mail

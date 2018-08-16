@@ -1,0 +1,6 @@
+---
+- name: Restart Postfix
+  service:
+    name: postfix
+    state: restarted
+  become_user: root

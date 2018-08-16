@@ -1,0 +1,13 @@
+---
+- name: Install mailutils for email sending
+  apt:
+    name: mailutils
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
+
+- name: Set Postfix to listen on 127.0.0.1 only
+  command:
+    postconf -e 'inet_interfaces = 127.0.0.1'
+  notify:
+    - Restart Postfix
