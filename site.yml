@@ -1,10 +1,13 @@
 ---
-- hosts: jenkins
+- hosts: localhost
+  connection: local
   become: True
 
   roles:
     - role: packages
       tags: packages
+    - role: users
+      tags: users
 
   var_files:
     - 'local_settings.yml'
