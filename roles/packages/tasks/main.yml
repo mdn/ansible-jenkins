@@ -1,5 +1,15 @@
 ---
 - name: Install common ops packages
-  apt: name={{ item }} state=present update_cache=yes cache_valid_time=600
+  apt:
+    name: "{{ item }}"
+    state=present
+    update_cache=yes
+    cache_valid_time=600
   with_items:
     - "{{ packages }}"
+
+- name: Install common pip packages
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - "{{ python_packages }}"

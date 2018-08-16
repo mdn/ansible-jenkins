@@ -1,23 +1,28 @@
 ---
 packages:
-	- htop
-	- python-virtualenv
-	- python-pip
-	- sharutils
-	- s3cmd
-	- python-magic  # Make s3cmd happier
-	- mosh
-	- tmux
-	- mc
-	- python-dev
-	- libffi-dev
-	- libssl-dev
-	- subversion
-	- supervisor
-	- apt-transport-https
-	- ca-certificates
-	- openjdk-8-jre
-	- openjdk-8-jdk
-	- openjdk-8-jdk-headless
-	- apache2-utils
-	- awscli
+  - htop
+  - python-virtualenv
+  - python-pip
+  - sharutils
+  - s3cmd
+  - python-magic  # Make s3cmd happier
+  - mosh
+  - tmux
+  - mc
+  - python-dev
+  - libffi-dev
+  - libssl-dev
+  - subversion
+  - supervisor
+  - apt-transport-https
+  - ca-certificates
+  - openjdk-8-jre
+  - openjdk-8-jdk
+  - openjdk-8-jdk-headless
+  - apache2-utils
+  - awscli
+  - jq
+  - git
+
+python_packages:
+  - j2cli
