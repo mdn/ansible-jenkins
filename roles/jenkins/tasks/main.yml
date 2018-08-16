@@ -1,37 +1,45 @@
 ---
 - name: Add Jenkins-CI Repository Key
-  apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key state=present
+  apt_key:
+    url: "http://pkg.jenkins-ci.org/{{ ansible_os_family|lower }}/jenkins-ci.org.key"
+    state: present
 
 - name: Add Jenkins-CI Repository
   apt_repository:
-    repo='deb http://pkg.jenkins-ci.org/debian binary/'
-    state=present
-    update_cache=yes
+    repo: 'deb http://pkg.jenkins-ci.org/{{ ansible_os_family|lower }} binary/'
+    state: present
+    update_cache: yes
 
 - name: Install Jenkins-CI
-  apt: name=jenkins state=present update_cache=yes cache_valid_time=600
+  apt:
+    name: jenkins
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
   notify:
     - Restart Jenkins
   register: install_jenkins
 
 - name: Add Jenkins user to docker group
-  user: name=jenkins groups=docker
+  user:
+    name: jenkins
+    groups: docker
   notify: Restart Jenkins
 
 - name: Set Jenkins-CI to listen only on 127.0.0.1
   lineinfile:
-    dest=/etc/default/jenkins
-    regexp=^JENKINS_ARGS=
-    line='JENKINS_ARGS="--webroot=/var/cache/$NAME/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1"'
-	notify: Restart Jenkins
+    dest: /etc/default/jenkins
+    regexp: ^JENKINS_ARGS=
+    line: 'JENKINS_ARGS="--webroot=/var/cache/$NAME/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1"'
+  notify: Restart Jenkins
   tags:
     - jenkins-conf
 
 - name: Enable Jenkins-CI Permissive Script Plugin
   lineinfile:
-    dest=/etc/default/jenkins
-    regexp=^JAVA_ARGS=
-    line='JAVA_ARGS="-Djava.awt.headless=true -Dpermissive-script-security.enabled=true"'
+    dest: /etc/default/jenkins
+    regexp: ^JAVA_ARGS=
+    line: 'JAVA_ARGS="-Djava.awt.headless=true -Dpermissive-script-security.enabled=true"'
   notify: Restart Jenkins
   tags:
     - jenkins-conf

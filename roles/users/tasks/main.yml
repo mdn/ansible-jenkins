@@ -5,7 +5,6 @@
     name: "{{ item.user }}"
     shell: "/bin/bash"
     groups: "users,sudo"
-    create_home: yes
     system: yes
     state: present
   with_items:
@@ -25,4 +24,4 @@
     dest: '/etc/sudoers.d/99-users'
     owner: root
     group: root
-		mode: '0440'
+    mode: '0440'

@@ -3,12 +3,19 @@
   connection: local
   become: True
 
+  vars_files:
+    #- 'local_settings.yml'
+    - './vars/main.yml'
+
   roles:
     - role: packages
       tags: packages
     - role: users
       tags: users
+    - role: docker
+      tags: docker
+    - role: jenkins
+      tags: jenkins
+    - role: kubernetes
+      tags: kubernetes
 
-  vars_files:
-    #- 'local_settings.yml'
-    - './vars/main.yml'

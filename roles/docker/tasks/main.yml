@@ -9,8 +9,8 @@
     repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release|lower }} stable"
     state: present
     update_cache: yes
-    tags:
-      - docker
+  tags:
+    - docker
 
 - name: Install Docker
   apt:
@@ -26,9 +26,9 @@
     dest: /etc/default/docker
     regexp: ^DOCKER_OPTS=
     line: 'DOCKER_OPTS="-s aufs  --insecure-registry=http://localhost:5000,http://localhost:5001"'
-    notify: Restart Docker
-    tags:
-      - docker
+  notify: Restart Docker
+  tags:
+    - docker
 
 - name: Install docker-compose
   get_url:
