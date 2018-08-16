@@ -2,4 +2,4 @@
 create_users: true
 
 account_names:
-  - { name: 'elim', key: 'https://github.com/limed.keys' }
+  - { user: 'elim', key: 'https://github.com/limed.keys' }
