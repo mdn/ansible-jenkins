@@ -45,11 +45,10 @@
 
 - name: Create cron job for docker-cleanup script
   cron:
-		name: "Remove docker images"
-		minute: 0
-		hour: 3
-		weekday: 0
+    name: "Remove docker images"
+    minute: 0
+    hour: 3
+    weekday: 0
     user: "root"
-		job: "/usr/local/bin/remove-docker-images.sh 2> /dev/null"
-		cron_file: remove_docker_images
-
+    job: "/usr/local/bin/remove-docker-images.sh 2> /dev/null"
+    cron_file: remove_docker_images
