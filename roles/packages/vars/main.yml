@@ -3,6 +3,7 @@ packages:
   - htop
   - python-virtualenv
   - python-pip
+  - python-passlib
   - sharutils
   - s3cmd
   - python-magic  # Make s3cmd happier

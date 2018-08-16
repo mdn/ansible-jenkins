@@ -43,3 +43,11 @@
   notify: Restart Jenkins
   tags:
     - jenkins-conf
+
+- name: Create backup directory
+  file:
+    path: {{ jenkins_backup_directory | default('/var/lib/jenkins/backups') }}
+    owner: jenkins
+    group: jenkins
+    mode: '0755'
+    state: directory
