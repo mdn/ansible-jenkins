@@ -46,7 +46,7 @@
 
 - name: Create backup directory
   file:
-    path: {{ jenkins_backup_directory | default('/var/lib/jenkins/backups') }}
+    path: "{{ jenkins_backup_directory | default('/var/lib/jenkins/backups') }}"
     owner: jenkins
     group: jenkins
     mode: '0755'
