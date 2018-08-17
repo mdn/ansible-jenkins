@@ -46,8 +46,24 @@
 
 - name: Create backup directory
   file:
-    path: "{{ jenkins_backup_directory | default('/var/lib/jenkins/backups') }}"
+    path: "{{ jenkins_backup_directory }}"
     owner: jenkins
     group: jenkins
     mode: '0755'
     state: directory
+
+- name: Copy backup script
+  template:
+    src: "jenkins-backup.sh.j2"
+    dest: "/usr/local/bin/jenkins-backup.sh"
+    mode: "0755"
+
+- name: Create cron job for jenkins-backup script
+  cron:
+    name: Backup jenkins
+    user: root
+    job: "/usr/local/bin/jenkins-backup.sh 2> /dev/null"
+    minute: 0
+    hour: 4
+    user: root
+    cron_file: jenkins_backup
