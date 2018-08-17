@@ -2,8 +2,8 @@
 
 set -u
 
-BACKUP_DIR={{ jenkins_backup_directory }}
-BACKUP_BUCKET={{ jenkins_backup_bucket }}
+BACKUP_DIR="{{ jenkins_backup_directory }}"
+BACKUP_BUCKET="{{ jenkins_backup_bucket }}"
 
 echo "Running backup"
 su - jenkins -c "aws s3 sync --delete "$BACKUP_DIR/" "s3://$BACKUP_BUCKET" --quiet 2> /dev/null"
@@ -11,6 +11,6 @@ RV=$?
 
 {% if jenkins_backup_dms is defined %}
 if [ "${RV} -eq 0 ]; then
-	curl -d "s=$?" -s {{ jenkins_backup_dms }}
+    curl -d "s=$?" -s {{ jenkins_backup_dms }}
 fi
 {% endif %}
