@@ -22,28 +22,3 @@
       tags: nginx
     - role: mail
       tags: mail
-
-  # Can't decide where to put this
-  # so putting it here for now
-  tasks:
-    - name: Set supervisor configuration
-      template:
-        src: "templates/{{ item }}"
-        dest: "/etc/supervisor/conf.d/{{ item }}"
-        group: root
-        owner: root
-        mode: 0600
-      with_items:
-        - docker-registry-eu-west.conf
-        - docker-registry-us-west.conf
-      notify: Restart supervisor
-      tags:
-        - supervisor
-
-  handlers:
-    - name: Restart supervisor
-      service:
-        name: supervisor
-        state: restarted
-      become_user: root
-
