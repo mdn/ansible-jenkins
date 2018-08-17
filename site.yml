@@ -22,3 +22,5 @@
       tags: nginx
     - role: mail
       tags: mail
+    - role: newrelic
+      tags: newrelic
