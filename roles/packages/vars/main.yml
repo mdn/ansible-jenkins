@@ -21,9 +21,9 @@ packages:
   - openjdk-8-jdk
   - openjdk-8-jdk-headless
   - apache2-utils
-  - awscli
   - jq
   - git
 
 python_packages:
   - j2cli
+  - awscli
