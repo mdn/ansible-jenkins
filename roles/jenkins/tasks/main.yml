@@ -63,7 +63,6 @@
     name: Backup jenkins
     user: root
     job: "/usr/local/bin/jenkins-backup.sh 2> /dev/null"
-    minute: 0
-    hour: 4
+    minute: "*/15"
     user: root
     cron_file: jenkins_backup
