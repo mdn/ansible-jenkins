@@ -1,2 +1,2 @@
 ---
-jenkins_backup_directory: '/var/lib/jenkins/backups'
+jenkins_backup_directory: '/data/backups'
