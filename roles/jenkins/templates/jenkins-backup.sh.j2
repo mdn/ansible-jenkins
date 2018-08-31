@@ -11,6 +11,6 @@ RV=$?
 
 {% if jenkins_backup_dms is defined %}
 if [ "${RV}" -eq 0 ]; then
-    curl -d "s=$?" -s {{ jenkins_backup_dms }}
+    curl -d "s=${RV}" -s {{ jenkins_backup_dms }}
 fi
 {% endif %}
