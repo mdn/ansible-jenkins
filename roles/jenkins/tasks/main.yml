@@ -62,7 +62,7 @@
   cron:
     name: Backup jenkins
     user: root
-    job: "/usr/local/bin/jenkins-backup.sh 2>&1 /dev/null"
+    job: "/usr/bin/flock -w 10 /var/lock/backup_jenkins.lock /usr/local/bin/jenkins-backup.sh 2>&1 /dev/null"
     minute: "*/15"
     user: root
     cron_file: jenkins_backup
