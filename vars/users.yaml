@@ -3,3 +3,7 @@ create_users: true
 
 account_names:
   - { user: 'elim', key: 'https://github.com/limed.keys' }
+  - { user: 'jwhitlock', key: 'https://github.com/jwhitlock.keys' }
+  - { user: 'rjohnson', key: 'https://github.com/escattone.keys' }
+  - { user: 'jmize', key: 'https://github.com/jgmize.keys' }
+  - { user: 'dparfitt', key: 'https://github.com/metadave.keys' }
