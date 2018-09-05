@@ -6,7 +6,7 @@ BACKUP_DIR="{{ jenkins_backup_directory }}"
 BACKUP_BUCKET="{{ jenkins_backup_bucket }}"
 
 echo "Running backup"
-su - jenkins -c "aws s3 sync --delete "$BACKUP_DIR/" "s3://$BACKUP_BUCKET" --quiet 2> /dev/null"
+su - jenkins -c "aws s3 sync --delete --exclude=.initial-sync "$BACKUP_DIR/" "s3://$BACKUP_BUCKET" --quiet 2> /dev/null"
 RV=$?
 
 {% if jenkins_backup_dms is defined %}
