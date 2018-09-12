@@ -1,0 +1,12 @@
+---
+- name: Install unattended-upgrades
+  become: yes
+  apt:
+    pkg: unattended-upgrades
+    state: present
+
+- name: 'Adjust APT update intervals'
+  become: yes
+  copy:
+    src: apt_periodic
+    dest: /etc/apt/apt.conf.d/10periodic
