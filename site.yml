@@ -8,6 +8,8 @@
     - './vars/users.yaml'
 
   roles:
+    - role: apt
+      tags: apt
     - role: packages
       tags: packages
     - role: users
