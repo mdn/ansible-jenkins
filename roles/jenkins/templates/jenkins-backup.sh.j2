@@ -5,6 +5,10 @@ set -u
 BACKUP_DIR="{{ jenkins_backup_directory }}"
 BACKUP_BUCKET="{{ jenkins_backup_bucket }}"
 
+# Thin backups keep failing when we have broken links
+# this attempts to allieviate it
+find /var/lib/jenkins -xtype l -exec rm {} \;
+
 echo "Running backup"
 su - jenkins -c "aws s3 sync --delete --exclude=.initial-sync "$BACKUP_DIR/" "s3://$BACKUP_BUCKET" --quiet 2> /dev/null"
 RV=$?
