@@ -1,15 +1,13 @@
 ---
+- name: Download remote_syslog2
+  get_url:
+    url: https://github.com/papertrail/remote_syslog2/releases/download/v{{ package_version }}/remote-syslog2_{{ package_version }}_amd64.deb
+    dest: /tmp/remote-syslog2_{{ package_version }}_amd64.deb
+
 - name: Install remote_syslog2
   apt:
-    deb: https://github.com/papertrail/remote_syslog2/releases/download/v{{ package_version }}/remote-syslog2_{{ package_version }}_amd64.deb
-
-- name: Copy systemd file
-  copy:
-    src: 'remote_syslog.systemd.service'
-    dest: '/etc/systemd/system/remote_syslog.systemd.service'
-    owner: root
-    mode: root
-    mode: 0644
+    deb: /tmp/remote-syslog2_{{ package_version }}_amd64.deb
+    state: present
 
 - name: Configure papertrail
   template:
@@ -19,3 +17,8 @@
     group: root
     mode: 0644
 
+- name: Start service
+  service:
+    name: remote_syslog
+    enabled: yes
+    state: started
