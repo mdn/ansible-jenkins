@@ -4,16 +4,16 @@
     keyserver: keyserver.ubuntu.com
     id: 382E94DE # Pulled from https://docs.datadoghq.com/agent/basic_agent_usage/ubuntu/
     state: present
-    tags:
-      - datadog
+  tags:
+    - datadog
 
 - name: Add Datadog repository
   apt_repository:
     repo: 'deb https://apt.datadoghq.com/ stable 6'
     state: present
     update_cache: yes
-    tags:
-      - datadog
+  tags:
+    - datadog
 
 - name: Install Datadog
   apt:

@@ -1,2 +1,2 @@
 ---
-install_datadog: False
+install_datadog: True

@@ -26,7 +26,5 @@
       tags: mail
     - role: papertrail
       tags: papertrail
-    #- role: newrelic
-    #tags: newrelic
-    #- role: datadog
-    #  tags: datadog
+    - role: datadog
+      tags: datadog
