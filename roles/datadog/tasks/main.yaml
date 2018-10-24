@@ -24,3 +24,19 @@
   tags:
     - datadog
   when: install_datadog
+
+- name: Configure datadog
+  template:
+    src: datadog.cfg.j2
+    dest: /etc/datadog-agent/datadog.yaml
+    mode: 0644
+  tags:
+    - datadog
+  notify:
+    - restart datadog
+
+- name: Start service
+  service:
+    name: datadog-agent
+    enabled: yes
+    state: started
