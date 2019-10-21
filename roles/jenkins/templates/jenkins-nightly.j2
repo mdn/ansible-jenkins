@@ -1,0 +1,11 @@
+#!/bin/bash
+# Does a nightly backup of jenkins home
+
+set -u
+
+JENKINS_HOME="/var/lib/jenkins"
+BACKUP_DIR="{{ jenkins_backup_directory }}"
+BACKUP_BUCKET="{{ jenkins_backup_bucket }}"
+
+su - jenkins -c "tar --exclude=${JENKINS_HOME}/workspace -cf - ${JENKINS_HOME} | gzip -c > ${BACKUP_DIR}/nightly.tar.gz"
+su - jenkins -c "aws s3 cp ${BACKUP_DIR}/nightly.tar.gz s3://${BACKUP_BUCKET}/"
