@@ -58,6 +58,12 @@
     dest: "/usr/local/bin/jenkins-backup.sh"
     mode: "0755"
 
+- name: Copy jenkins nightly script
+  template:
+    src: "jenkins-nightly.j2"
+    dest: "/etc/cron.daily/jenkins-nightly"
+    mode: "0755"
+
 - name: Create cron job for jenkins-backup script
   cron:
     name: Backup jenkins

@@ -1,4 +1,7 @@
 #!/bin/bash
+# Does a nightly backup of jenkins home
+
+set -u
 
 JENKINS_HOME="/var/lib/jenkins"
 BACKUP_DIR="{{ jenkins_backup_directory }}"
