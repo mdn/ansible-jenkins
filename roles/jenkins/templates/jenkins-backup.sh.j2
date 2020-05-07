@@ -4,7 +4,8 @@ set -u
 
 BACKUP_DIR="{{ jenkins_backup_directory }}"
 BACKUP_BUCKET="{{ jenkins_backup_bucket }}"
-SYNC_OPTIONS="--delete --exclude=.initial-sync --exclude='*/workspace/*'"
+#SYNC_OPTIONS="--delete --exclude '*' --include 'BACKUPSET_*.zip'"
+SYNC_OPTIONS="--delete"
 
 # Thin backups keep failing when we have broken links
 # this attempts to allieviate it

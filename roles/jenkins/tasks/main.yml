@@ -63,7 +63,14 @@
     name: Backup jenkins
     user: root
     job: "/usr/bin/flock -w 10 /var/lock/backup_jenkins.lock /usr/local/bin/jenkins-backup.sh 2>&1 /dev/null"
-    hour: "*/4"
-    minute: "0"
+    hour: "*/1"
+    minute: "30"
     user: root
     cron_file: jenkins_backup
+
+- name: Create cron daily backup script
+  template:
+    src: "jenkins-nightly.j2"
+    dest: "/etc/cron.daily/jenkins-nightly"
+    mode: "0755"
+

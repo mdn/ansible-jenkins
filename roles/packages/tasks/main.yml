@@ -13,3 +13,9 @@
     name: "{{ item }}"
   with_items:
     - "{{ python_packages }}"
+
+- name: Install kubeval
+  unarchive:
+    src: https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
