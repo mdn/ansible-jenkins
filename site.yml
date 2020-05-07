@@ -26,5 +26,3 @@
       tags: mail
     - role: papertrail
       tags: papertrail
-    - role: datadog
-      tags: datadog
