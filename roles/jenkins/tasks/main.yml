@@ -73,3 +73,10 @@
     minute: "30"
     user: root
     cron_file: jenkins_backup
+
+- name: Create cron daily backup script
+  template:
+    src: "jenkins-nightly.j2"
+    dest: "/etc/cron.daily/jenkins-nightly"
+    mode: "0755"
+
