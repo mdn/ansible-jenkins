@@ -10,3 +10,5 @@ account_names:
   - { user: 'sciurus', key: 'https://github.com/sciurus.keys' }
   - { user: 'bkochendorfer', key: 'https://github.com/bkochendorfer.keys' }
   - { user: 'cmharlow', key: 'https://github.com/cmharlow.keys' }
+  # MDN Team
+  - { user: 'rjohnson', key: 'https://github.com/escattone.keys' }
