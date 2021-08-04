@@ -2,8 +2,11 @@
 create_users: true
 
 account_names:
-  - { user: 'elim', key: 'https://github.com/limed.keys' }
-  - { user: 'jwhitlock', key: 'https://github.com/jwhitlock.keys' }
-  - { user: 'rjohnson', key: 'https://github.com/escattone.keys' }
-  - { user: 'jmize', key: 'https://github.com/jgmize.keys' }
-  - { user: 'dparfitt', key: 'https://github.com/metadave.keys' }
+  # Web SRE Team
+  # According to According to https://github.com/orgs/mozilla-it/teams/it-se/members?query=membership:child-team
+  - { user: 'duallain', key: 'https://github.com/duallain.keys' }
+  - { user: 'floatingatoll', key: 'https://github.com/floatingatoll.keys' }
+  - { user: 'smarnach', key: 'https://github.com/smarnach.keys' }
+  - { user: 'sciurus', key: 'https://github.com/sciurus.keys' }
+  - { user: 'bkochendorfer', key: 'https://github.com/bkochendorfer.keys' }
+  - { user: 'cmharlow', key: 'https://github.com/cmharlow.keys' }
