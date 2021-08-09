@@ -1,12 +1,12 @@
 ---
 - name: Add Jenkins-CI Repository Key
   apt_key:
-    url: "http://pkg.jenkins-ci.org/{{ ansible_os_family|lower }}/jenkins-ci.org.key"
+    url: "http://pkg.jenkins.io/{{ ansible_os_family|lower }}/jenkins.io.key"
     state: present
 
 - name: Add Jenkins-CI Repository
   apt_repository:
-    repo: 'deb http://pkg.jenkins-ci.org/{{ ansible_os_family|lower }} binary/'
+    repo: 'deb http://pkg.jenkins.io/{{ ansible_os_family|lower }} binary/'
     state: present
     update_cache: yes
 
