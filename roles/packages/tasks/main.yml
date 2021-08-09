@@ -16,7 +16,7 @@
 
 - name: Download kubeval
   get_url:
-    src: https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+    url: https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
     dest: /tmp/kubeval-linux-amd64.tar.gz
 
 - name: Install kubeval
