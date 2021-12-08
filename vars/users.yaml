@@ -10,4 +10,4 @@ account_names:
   - { user: 'bkochendorfer', key: 'https://github.com/bkochendorfer.keys' }
   - { user: 'cmharlow', key: 'https://github.com/cmharlow.keys' }
   # MDN Team
-  - { user: 'rjohnson', key: 'https://github.com/escattone.keys' }
+  - { user: 'fmerz', key: 'https://github.com/fiji-flo.keys' }
