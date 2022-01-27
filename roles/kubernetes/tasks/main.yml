@@ -6,7 +6,8 @@
 
 - name: Add kubernetes apt repo
   apt_repository:
-    repo: "deb http://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release|lower }} main"
+    # no repo available for bionic, pinning to xenial
+    repo: "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     state: present
     update_cache: yes
 

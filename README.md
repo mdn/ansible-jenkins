@@ -18,7 +18,7 @@ This playbook is a rework of the [ee-infra-jenkins](https://github.com/mozmeao/e
 3. Clone this repository to a location
 4. Run the playbook
 ```
-ansible-playbook site.yml -e "nginx_htpasswd=YourPasswordHere jenkins_backup_bucket=BucketNameHere jenkins_backup_dms=deadmanssitchurl jenkins_backup_directory=backupdirpath"
+ansible-playbook site.yml -e "nginx_htpasswd=YourPasswordHere jenkins_backup_bucket=BucketNameHere jenkins_backup_dms=deadmanssitchurl jenkins_backup_directory=backupdirpath papertrail_host=papertrailurl papertrail_port=papertrailport"
 ```
 
 Currently this playbook is being used as part of an autoscaling group userdata that clones and runs this playbook on boot.
