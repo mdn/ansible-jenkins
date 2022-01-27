@@ -8,6 +8,6 @@ account_names:
   - { user: 'floatingatoll', key: 'https://github.com/floatingatoll.keys' }
   - { user: 'smarnach', key: 'https://github.com/smarnach.keys' }
   - { user: 'bkochendorfer', key: 'https://github.com/bkochendorfer.keys' }
-  - { user: 'cmharlow', key: 'https://github.com/cmharlow.keys' }
+  - { user: 'rvaralda', key: 'https://github.com/rvaralda.keys' }
   # MDN Team
   - { user: 'fmerz', key: 'https://github.com/fiji-flo.keys' }
