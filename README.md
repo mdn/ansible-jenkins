@@ -2,6 +2,9 @@
 This is an [ansible](http://ansible.com/) playbook to install and
 configure [Jenkins-CI](http://jenkins-ci.org/).
 
+> **Note**
+> As of 2023, we have migrated all our CI/CD workflows to GitHub Actions and no longer use Jenkins.
+
 The playbook will install NGINX, Docker, a local-only
 SMTP server and Jenkins. It will also install Docker-maintenance cron
 jobs and Jenkins-backup scripts to S3.
